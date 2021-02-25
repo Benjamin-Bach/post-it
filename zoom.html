@@ -24,12 +24,8 @@
     </nav>
   </header>
   <main>
-    <article class="with-postit">
+    <article id="zone1">
       <img src="https://placehold.it/1900x1200" alt="">
-      <section id="postit">
-        <div>Commentaire 1</div>
-        <div>Commentaire 2</div>
-      </section>
     </article>
   </main>
 
@@ -63,6 +59,10 @@
       </ul>
     </nav>
   </footer>
+  <section id="post-it">
+    <div data-target="#zone1" style="left:50%;bottom:50%;">Notre contenu post-it</div>
+    <div data-target="header" style="top:0; left:0">Mon texte de commentaire</div>
+  </section>
   <script src="post-it.js" charset="utf-8"></script>
 </body>
 </html>

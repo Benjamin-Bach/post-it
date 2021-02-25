@@ -1,20 +1,10 @@
-.with-postit{
-  position: relative;
-}
-#postit div{
+
+[data-target]{
   background-color: darkkhaki;
   display: inline-block;
   padding: 20px;
   position: absolute;
 }
 
-#postit div:nth-child(1){
-  left: 50%;
-  top: 50%;
-  background-color: cadetblue;
-}
 
-#postit div:nth-child(2){
-  right: 10%;
-  bottom: 10%;
-}
+
