@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="layout.css">
   <link rel="stylesheet" href="post-it.css">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <script src="post-it.js" charset="utf-8"></script>
 </head>
-<body>
+<body x-data="{ postitState: false }" x-on:click="newPostIt($refs, $event)">
+  <input x-ref="state" type="checkbox" id="postitState" ><label for="postitState">Ajouter des post-it</label>
   <header>
     <a href="index.html">
       <h1>Post-It !</h1>
@@ -92,6 +95,6 @@
       </ul>
     </nav>
   </footer>
-  <script src="post-it.js" charset="utf-8"></script>
+
 </body>
 </html>

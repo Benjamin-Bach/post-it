@@ -5,7 +5,7 @@
   z-index: 99;
 }
 
-.post-it [contenteditable]{
+.post-it .wrapper{
   padding: 20px;
   margin: -15px 0 0 5px;
   background-color: yellowgreen;
@@ -13,6 +13,11 @@
   position: relative;
   z-index: 100;
 }
+
+.post-it [contenteditable]{
+  padding: 20px;
+}
+
 
 .post-it .close{
   height: 20px;
@@ -24,10 +29,20 @@
   cursor: pointer;
 }
 
-.important [contenteditable]{
+.important .wrapper{
   background-color:darkorange;
-  color: white;
+}
+.important .close{
+  background-color: red;
 }
 
+@media (min-width: 700px) and (max-width: 900px) {
+  .post-it [contenteditable]{
+    background-color: brown;
+  }
+  .post-it .close{
+    background-color: red;
+  }
+}
 
 

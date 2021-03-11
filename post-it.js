@@ -4,10 +4,11 @@ function newPostIt($refs, $event){
   if(
     $refs.state.checked
     && ($event.target.id != 'postitState')
-    && !$event.target.offsetParent.classList.contains('post-it')){
+    && !$event.target.offsetParent.classList.contains('post-it')
+    && !$event.target.offsetParent.classList.contains('wrapper')){
     $event.preventDefault()
 
-    let target = $event.target.nodeName == 'IMG' ? $event.target.offsetParent : $event.target
+    let target = ($event.target.nodeName == 'IMG') || ($event.target.nodeName == 'A') ? $event.target.parentElement : $event.target
 
     console.log(target)
     let rect = target.getBoundingClientRect();
@@ -18,12 +19,21 @@ function newPostIt($refs, $event){
 
     target.style.position = 'relative'
     let newComment = document.createElement('div')
-        newComment.setAttribute('x-data', '{ open: false }')
-        newComment.classList.add('post-it')
+        newComment.setAttribute('x-data', '{ open: false, postItClass: "post-it basic" }')
+        newComment.setAttribute(':class', 'postItClass')
         newComment.style.top = topPercent + '%'
         newComment.style.left = leftPercent + '%'
-        newComment.innerHTML = `<div @click="open = true" class="close"></div>
-                                <div x-show="open" @click.away="open = false" contenteditable="true"></div>`
+        newComment.innerHTML = `
+        <div @click="open = true" class="close"></div>
+        <div class="wrapper" x-show="open" @click.away="open = false" >
+          <select
+            @change="postItClass = 'post-it ' + $el.querySelector('select').value">
+            <option value="basic">Basic</option>
+            <option value="important">Important</option>
+          </select>
+          <div contenteditable="true"></div>
+        </div>
+                                `
     target.appendChild(newComment)
   }else{
 
